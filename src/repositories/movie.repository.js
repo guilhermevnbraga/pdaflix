@@ -1,6 +1,6 @@
 import { prisma } from "../services/prisma.js";
 
-export const createMovie = async (data) => {
+export const createMovieRepository = async (data) => {
   try {
     const movie = await prisma.movie.create({
       data: {
