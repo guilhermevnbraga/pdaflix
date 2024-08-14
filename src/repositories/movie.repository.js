@@ -27,3 +27,23 @@ export const createMovieRepository = async (data) => {
     throw new Error("Failed to create movie");
   }
 };
+
+export const getAllMoviesRepository = async () => {
+  try {
+    const movies = await prisma.movie.findMany({
+      select: {
+        title: true,
+        description: true,
+        releaseDate: true,
+        duration: true,
+        genre: true,
+        rating: true,
+      },
+    });
+
+    return movies;
+  } catch (error) {
+    console.error("Error retrieving movies:", error);
+    throw new Error("Failed to retrieve movies");
+  }
+};
