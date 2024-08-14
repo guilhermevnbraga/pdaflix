@@ -1,6 +1,6 @@
 import { createMovieRepository } from "../repositories/movie.repository.js";
 
-export const createUserController = async (req, res) => {
+export const createMovieController = async (req, res) => {
   try {
     const movie = await createMovieRepository(req.body);
     console.log(movie);
