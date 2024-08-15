@@ -8,18 +8,22 @@ export const createMangaRepository = async (data) => {
                 description: data.description,
                 author: data.author,
                 releaseDate: new Date(data.releaseDate),
-                pageNumber: data.pageNumber,
+                volumeNumber: data.volumeNumber,
                 genre: data.genre,
                 rating: data.rating,
+                onGoing: data.onGoing,
+                releaseFrequency: data.releaseFrequency,
             },
             select: {
                 title: true,
                 description: true,
                 author: true,
                 releaseDate: true,
-                pageNumber: true,
+                volumeNumber: true,
                 genre: true,
                 rating: true,
+                onGoing: true,
+                releaseFrequency: true,
             },
         });
 
@@ -39,9 +43,11 @@ export const getAllMangasRepository = async () => {
                 description: true,
                 author: true,
                 releaseDate: true,
-                pageNumber: true,
+                volumeNumber: true,
                 genre: true,
                 rating: true,
+                onGoing: true,
+                releaseFrequency: true,
             },
         });
 
@@ -63,9 +69,11 @@ export const updateMangaRepository = async (id, data) => {
                 description: true,
                 author: true,
                 releaseDate: true,
-                pageNumber: true,
+                volumeNumber: true,
                 genre: true,
                 rating: true,
+                onGoing: true,
+                releaseFrequency: true,
             },
         });
 
@@ -84,6 +92,7 @@ export const deleteMangaRepository = async (id) => {
                 id: true,
                 title: true,
                 description: true,
+                author: true,
             },
         });
 
