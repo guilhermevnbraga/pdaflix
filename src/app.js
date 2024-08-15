@@ -6,6 +6,7 @@ import animeRouter from "./routes/anime.routes.js";
 import seriesRouter from "./routes/series.routes.js";
 import bookRouter from "./routes/book.routes.js";
 import mangaRouter from "./routes/manga.routes.js";
+import favoriteRouter from "./routes/favorites.routes.js";
 
 const app = express();
 app.use(urlencoded({ extended: true }));
@@ -17,5 +18,6 @@ app.use(animeRouter);
 app.use(seriesRouter);
 app.use(bookRouter);
 app.use(mangaRouter);
+app.use(favoriteRouter);
 
 export default app;
