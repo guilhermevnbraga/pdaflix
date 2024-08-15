@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "main.js",
   "engines": {
-    "node": "20"
+    "node": " 20.16.0"
   },
   "type": "module",
   "scripts": {
     "dev": "node --watch src/server.js",
-    "start": "node src/server"
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
