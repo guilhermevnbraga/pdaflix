@@ -18,7 +18,7 @@ export const createFinishedController = async (req, res) => {
 export const getAllFinishedsByUserIdController = async (req, res) => {
     try {
         const { userid } = req.params;
-        const finisheds = await getAllFinishedsByUserIdRepository(userid);
+        const finisheds = await getAllFinishedsByUserIdRepository(Number(userid));
         res.status(200).json(finisheds);
     } catch (error) {
         console.error("Error in getAllFinishedsController:", error);

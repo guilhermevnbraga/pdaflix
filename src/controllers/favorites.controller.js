@@ -7,7 +7,7 @@ import {
 
 export const createFavoriteController = async (req, res) => {
     try {
-        const favorite = await createFavoriteRepository(req.body);
+        const favorite = await createFavoriteRepository(Number(req.body));
         res.status(201).json(favorite);
     } catch (error) {
         console.error("Error in createFavoriteController:", error);
