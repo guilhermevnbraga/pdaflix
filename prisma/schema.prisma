@@ -38,7 +38,8 @@ model User {
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  favorites   Favorite[]
+  favorites Favorite[]
+  finished  Finished[] 
 }
 
 model Series {
@@ -78,6 +79,14 @@ model Manga {
 }
 
 model Favorite {
+  id        Int      @id @default(autoincrement())
+  user_id   Int
+  item_id   Int
+  item_type String
+  user      User     @relation(fields: [user_id], references: [id])
+}
+
+model Finished {
   id        Int      @id @default(autoincrement())
   user_id   Int
   item_id   Int
