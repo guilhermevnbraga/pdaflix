@@ -58,14 +58,7 @@ export const updateSeriesRepository = async (id, data) => {
   try {
     const updatedSeries = await prisma.series.update({
       where: { id },
-      data: {
-        title: data.title,
-        description: data.description,
-        releaseDate: new Date(data.releaseDate),
-        seasons: data.seasons,
-        genre: data.genre,
-        rating: data.rating,
-      },
+      data,
       select: {
         id: true,
         title: true,
@@ -97,12 +90,12 @@ export const deleteSeriesRepository = async (id) => {
         releaseDate: true,
         seasons: true,
         genre: true,
-    },
-});
+      },
+    });
 
-return deletedSeries;
-} catch (error) {
-console.error("Error deleting series:", error);
-throw new Error("Failed to delete series");
-}
+    return deletedSeries;
+  } catch (error) {
+    console.error("Error deleting series:", error);
+    throw new Error("Failed to delete series");
+  }
 };
