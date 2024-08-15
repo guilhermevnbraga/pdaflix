@@ -1,8 +1,8 @@
 import { Router } from "express";
 import {
+  getAllFavoritesByUserIdController,
   createFavoriteController,
   deleteFavoriteController,
-  getAllFavoritesByUserIdController,
   updateFavoriteController,
 } from "../controllers/favorites.controller.js";
 
