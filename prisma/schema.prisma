@@ -45,3 +45,15 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Series {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  releaseDate DateTime
+  seasons     Int
+  genre       String
+  rating      Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
