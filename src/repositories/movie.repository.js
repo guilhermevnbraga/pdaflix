@@ -32,6 +32,7 @@ export const getAllMoviesRepository = async () => {
   try {
     const movies = await prisma.movie.findMany({
       select: {
+        id: true,
         title: true,
         description: true,
         releaseDate: true,
@@ -45,5 +46,46 @@ export const getAllMoviesRepository = async () => {
   } catch (error) {
     console.error("Error retrieving movies:", error);
     throw new Error("Failed to retrieve movies");
+  }
+};
+
+export const updateMovieRepository = async (id, data) => {
+  try {
+    const updatedMovie = await prisma.movie.update({
+      where: { id },
+      data,
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        releaseDate: true,
+        duration: true,
+        genre: true,
+        rating: true,
+      },
+    });
+
+    return updatedMovie;
+  } catch (error) {
+    console.error("Error updating movie:", error);
+    throw new Error("Failed to update movie");
+  }
+};
+
+export const deleteMovieRepository = async (id) => {
+  try {
+    const deletedMovie = await prisma.movie.delete({
+      where: { id },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+      },
+    });
+
+    return deletedMovie;
+  } catch (error) {
+    console.error("Error deleting movie:", error);
+    throw new Error("Failed to delete movie");
   }
 };

@@ -2,6 +2,9 @@
   "name": "pdaflix",
   "version": "1.0.0",
   "main": "main.js",
+  "engines": {
+    "node": "20"
+  },
   "type": "module",
   "scripts": {
     "dev": "node --watch src/server.js"
