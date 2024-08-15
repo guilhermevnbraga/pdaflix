@@ -4,7 +4,7 @@ import {
   deleteFinishedController,
   getAllFinishedsByUserIdController,
   updateFinishedController,
-} from "../controllers/finisheds.controller.js";
+} from "../controllers/finished.controller.js";
 
 const finishedRouter = Router();
 

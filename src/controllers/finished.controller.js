@@ -3,7 +3,7 @@ import {
     getAllFinishedsByUserIdRepository,
     updateFinishedRepository,
     deleteFinishedRepository,
-} from "../repositories/finisheds.repository.js";
+} from "../repositories/finished.repository.js";
 
 export const createFinishedController = async (req, res) => {
     try {
