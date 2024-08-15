@@ -6,7 +6,7 @@ A **PDAFlix API** é uma aplicação backend desenvolvida para gerenciar um cat�
 
 ## Requisitos
 
-- **Node.js** versão 16 ou superior
+- **Node.js** versão 18 ou superior
 - **PostgreSQL** versão 16 ou superior
 - **Prisma ORM**
 - **NPM** ou **Yarn**
