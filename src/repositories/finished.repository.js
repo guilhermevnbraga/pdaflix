@@ -23,8 +23,7 @@ export const createFinishedRepository = async (data) => {
 
 export const getAllFinishedsByUserIdRepository = async (userId) => {
     try {
-        console.log(`Fetching finished items for user ID: ${userId}`);
-        const finished = await prisma.finished.findMany({
+        const finisheds = await prisma.finished.findMany({
             where: { user_id: userId },
             select: {
                 id: true,
@@ -34,11 +33,9 @@ export const getAllFinishedsByUserIdRepository = async (userId) => {
             },
         });
 
-        console.log(`Finished items retrieved: ${JSON.stringify(finished)}`);
-        return finished;
+        return finisheds;
     } catch (error) {
-        console.error("Error in getAllFinishedByUserIdRepository:", error);
-        throw new Error("Failed to retrieve finished items");
+        throw new Error("Failed to retrieve finisheds");
     }
 };
 
