@@ -52,6 +52,30 @@ export const getAllBooksRepository = async () => {
   }
 };
 
+
+export const getBookByIdRepository = async (id) => {
+  try {
+    const book = await prisma.book.findMany({
+      where: { id },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        author: true,
+        releaseDate: true,
+        pageNumber: true,
+        genre: true,
+        rating: true,
+      },
+    });
+
+    return book;
+  } catch (error) {
+    console.error("Error retrieving book:", error);
+    throw new Error("Failed to retrieve book");
+  }
+};
+
 export const updateBookRepository = async (id, data) => {
   try {
     const updatedBook = await prisma.book.update({

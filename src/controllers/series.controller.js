@@ -1,6 +1,7 @@
 import {
   createSeriesRepository,
   getAllSeriesRepository,
+  getSeriesByIdRepository,
   updateSeriesRepository,
   deleteSeriesRepository,
 } from "../repositories/series.repository.js";
@@ -26,6 +27,19 @@ export const getAllSeriesController = async (req, res) => {
     return res.status(200).json(series);
   } catch (error) {
     console.error("Error in getAllSeriesController:", error);
+
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const getSeriesByIdController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const animes = await getSeriesByIdRepository(id);
+
+    return res.status(200).json(animes);
+  } catch (error) {
+    console.error("Error in getSeriesById:", error);
 
     return res.status(500).json({ message: "Internal server error" });
   }

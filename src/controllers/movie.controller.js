@@ -1,6 +1,7 @@
 import {
   createMovieRepository,
   getAllMoviesRepository,
+  getMovieByIdRepository,
   updateMovieRepository,
   deleteMovieRepository,
 } from "../repositories/movie.repository.js";
@@ -22,6 +23,19 @@ export const getAllMoviesController = async (req, res) => {
     return res.status(200).json(movies);
   } catch (error) {
     console.error("Error in getAllMoviesController:", error);
+
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const getMovieByIdController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const animes = await getMovieByIdRepository(id);
+
+    return res.status(200).json(animes);
+  } catch (error) {
+    console.error("Error in getMovieById:", error);
 
     return res.status(500).json({ message: "Internal server error" });
   }

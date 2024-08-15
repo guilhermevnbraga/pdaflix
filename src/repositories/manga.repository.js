@@ -58,6 +58,31 @@ export const getAllMangasRepository = async () => {
     }
 };
 
+export const getMangaByIdRepository = async (id) => {
+    try {
+        const manga = await prisma.manga.findMany({
+            where: { id },
+            select: {
+                id: true,
+                title: true,
+                description: true,
+                author: true,
+                releaseDate: true,
+                volumeNumber: true,
+                genre: true,
+                rating: true,
+                onGoing: true,
+                releaseFrequency: true,
+            },
+        });
+
+        return manga;
+    } catch (error) {
+        console.error("Error retrieving manga:", error);
+        throw new Error("Failed to retrieve manga");
+    }
+};
+
 export const updateMangaRepository = async (id, data) => {
     try {
         const updatedManga = await prisma.manga.update({
