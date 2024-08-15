@@ -1,4 +1,4 @@
-import { createAnimeRepository, updateAnimeRepository, getAllAnimesRepository, deleteAnimeRepository } from "../repositories/anime.repository.js";
+import { createAnimeRepository, updateAnimeRepository, getAllAnimesRepository, getAnimeByIdRepository, deleteAnimeRepository } from "../repositories/anime.repository.js";
 
 export const createAnimeController = async (req, res) => {
     try {
@@ -26,6 +26,19 @@ export const createAnimeController = async (req, res) => {
       return res.status(200).json(animes);
     } catch (error) {
       console.error("Error in getAllAnimesController:", error);
+  
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  };
+
+  export const getAnimeByIdController = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const animes = await getAnimeByIdRepository(id);
+  
+      return res.status(200).json(animes);
+    } catch (error) {
+      console.error("Error in getAnimeById:", error);
   
       return res.status(500).json({ message: "Internal server error" });
     }

@@ -54,6 +54,30 @@ export const getAllSeriesRepository = async () => {
   }
 };
 
+export const getSeriesByIdRepository = async (id) => {
+  try {
+      const series = await prisma.series.findMany({
+          where: { id },
+          select: {
+            id: true,
+            title: true,
+            description: true,
+            releaseDate: true,
+            seasons: true,
+            genre: true,
+            rating: true,
+            createdAt: true,
+            updatedAt: true,
+          },
+      });
+
+      return series;
+  } catch (error) {
+      console.error("Error retrieving series:", error);
+      throw new Error("Failed to retrieve series");
+  }
+};
+
 export const updateSeriesRepository = async (id, data) => {
   try {
     const updatedSeries = await prisma.series.update({

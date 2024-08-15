@@ -1,6 +1,7 @@
 import {
     createMangaRepository,
     getAllMangasRepository,
+    getMangaByIdRepository,
     updateMangaRepository,
     deleteMangaRepository,
 } from "../repositories/manga.repository.js";
@@ -26,6 +27,19 @@ export const getAllMangasController = async (req, res) => {
         return res.status(500).json({ message: "Internal server error" });
     }
 };
+
+export const getMangaByIdController = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const animes = await getMangaByIdRepository(id);
+  
+      return res.status(200).json(animes);
+    } catch (error) {
+      console.error("Error in getMangaById:", error);
+  
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  };
 
 export const updateMangaController = async (req, res) => {
     try {

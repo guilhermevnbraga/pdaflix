@@ -1,6 +1,7 @@
 import {
     createBookRepository,
     getAllBooksRepository,
+    getBookByIdRepository,
     updateBookRepository,
     deleteBookRepository,
 } from "../repositories/book.repository.js";
@@ -26,6 +27,19 @@ export const getAllBooksController = async (req, res) => {
         return res.status(500).json({ message: "Internal server error" });
     }
 };
+
+export const getBookByIdController = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const animes = await getBookByIdRepository(id);
+  
+      return res.status(200).json(animes);
+    } catch (error) {
+      console.error("Error in getBookById:", error);
+  
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  };
 
 export const updateBookController = async (req, res) => {
     try {
